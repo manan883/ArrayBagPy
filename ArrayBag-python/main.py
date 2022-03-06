@@ -20,12 +20,27 @@ class ResizeableArrayBag:
         else:
             #is not null
             return False
+    def checkIfElementExist(self,s,name):
+        #assume bag exists
+        #changing list to set to lower the average time complexity to O(1) instead of O(n)
+        x = a.bags[name]
+        ss = set(x)
+        if s in ss:
+            return True
+        else:
+            return False
+        print()
+    def removeE(self,s,name):
+        #assume input is valid, will error handle in client class
+        x = a.bags[name]
+        x.remove(s)
+        a.bags[name] = x
+        print()
     def removePosition(self,s,name):
         try:
             s = int(s)
         except:
             return "Invalid Input!"
-        print('before if')
         if a.checkIfBagExists(name) == False:
             return "ERROR: Bag does not exist!"
         else:
@@ -36,7 +51,9 @@ class ResizeableArrayBag:
         if a.checkIfBagExists(s) == False:
             return "ERROR: Bag does not exist!"
         else:
-            print(a.bags[s])
+            sb = "\n".join(a.bags[s])
+            # print(sb)    
+            return sb
     def newBag(self,s):
         if a.checkIfBagExists(s) == True:
             return "Bag already exists!"
